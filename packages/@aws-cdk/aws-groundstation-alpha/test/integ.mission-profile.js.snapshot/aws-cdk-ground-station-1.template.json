@@ -1,0 +1,273 @@
+{
+ "Resources": {
+  "S3RecordingConfigBucketF30B38DE": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "BucketName": "aws-groundstation.generated.hsfwqik"
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain"
+  },
+  "S3RecordingConfigRoleD0DB223E": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "groundstation.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Policies": [
+     {
+      "PolicyDocument": {
+       "Statement": [
+        {
+         "Action": [
+          "s3:GetBucketLocation",
+          "s3:PutObject"
+         ],
+         "Effect": "Allow",
+         "Resource": [
+          {
+           "Fn::GetAtt": [
+            "S3RecordingConfigBucketF30B38DE",
+            "Arn"
+           ]
+          },
+          {
+           "Fn::Join": [
+            "",
+            [
+             {
+              "Fn::GetAtt": [
+               "S3RecordingConfigBucketF30B38DE",
+               "Arn"
+              ]
+             },
+             "/*"
+            ]
+           ]
+          }
+         ]
+        }
+       ],
+       "Version": "2012-10-17"
+      },
+      "PolicyName": "groundStationPolicies"
+     }
+    ]
+   }
+  },
+  "S3RecordingConfigResource": {
+   "Type": "AWS::GroundStation::Config",
+   "Properties": {
+    "ConfigData": {
+     "S3RecordingConfig": {
+      "BucketArn": {
+       "Fn::GetAtt": [
+        "S3RecordingConfigBucketF30B38DE",
+        "Arn"
+       ]
+      },
+      "RoleArn": {
+       "Fn::GetAtt": [
+        "S3RecordingConfigRoleD0DB223E",
+        "Arn"
+       ]
+      }
+     }
+    },
+    "Name": "S3RecordingConfig"
+   }
+  },
+  "AntennaDownlinkConfigResource": {
+   "Type": "AWS::GroundStation::Config",
+   "Properties": {
+    "ConfigData": {
+     "AntennaDownlinkConfig": {
+      "SpectrumConfig": {
+       "Bandwidth": {
+        "Units": "MHz",
+        "Value": 30
+       },
+       "CenterFrequency": {
+        "Units": "MHz",
+        "Value": 7812
+       },
+       "Polarization": "RIGHT_HAND"
+      }
+     }
+    },
+    "Name": "AntennaDownlinkConfig"
+   }
+  },
+  "GroundStationMissionProfileKey0B7F84D0": {
+   "Type": "AWS::KMS::Key",
+   "Properties": {
+    "KeyPolicy": {
+     "Statement": [
+      {
+       "Action": "kms:*",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":iam::",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":root"
+          ]
+         ]
+        }
+       },
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain"
+  },
+  "GroundStationMissionProfileRoleF16878F2": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "groundstation.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Policies": [
+     {
+      "PolicyDocument": {
+       "Statement": [
+        {
+         "Action": "kms:Decrypt",
+         "Effect": "Allow",
+         "Resource": {
+          "Fn::GetAtt": [
+           "GroundStationMissionProfileKey0B7F84D0",
+           "Arn"
+          ]
+         }
+        }
+       ],
+       "Version": "2012-10-17"
+      },
+      "PolicyName": "groundStationPolicies"
+     }
+    ]
+   }
+  },
+  "GroundStationMissionProfileTrackingConfigResource8AE05648": {
+   "Type": "AWS::GroundStation::Config",
+   "Properties": {
+    "ConfigData": {
+     "TrackingConfig": {
+      "Autotrack": "PREFERRED"
+     }
+    },
+    "Name": "TrackingConfig"
+   }
+  },
+  "Resource": {
+   "Type": "AWS::GroundStation::MissionProfile",
+   "Properties": {
+    "ContactPostPassDurationSeconds": 100,
+    "ContactPrePassDurationSeconds": 100,
+    "DataflowEdges": [
+     {
+      "Destination": {
+       "Fn::GetAtt": [
+        "S3RecordingConfigResource",
+        "Arn"
+       ]
+      },
+      "Source": {
+       "Fn::GetAtt": [
+        "AntennaDownlinkConfigResource",
+        "Arn"
+       ]
+      }
+     }
+    ],
+    "MinimumViableContactDurationSeconds": 100,
+    "Name": "GroundStationMissionProfile",
+    "StreamsKmsKey": {
+     "KmsKeyArn": {
+      "Fn::GetAtt": [
+       "GroundStationMissionProfileKey0B7F84D0",
+       "Arn"
+      ]
+     }
+    },
+    "StreamsKmsRole": {
+     "Fn::GetAtt": [
+      "GroundStationMissionProfileRoleF16878F2",
+      "Arn"
+     ]
+    },
+    "TrackingConfigArn": {
+     "Fn::GetAtt": [
+      "GroundStationMissionProfileTrackingConfigResource8AE05648",
+      "Arn"
+     ]
+    }
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

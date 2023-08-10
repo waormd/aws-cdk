@@ -6,8 +6,8 @@ const app = new cdk.App();
 
 const stack = new cdk.Stack(app, 'aws-cdk-ground-station-1');
 
-const antennaDownlinkConfig = new AntennaDownlinkConfig(stack, 'AntennaDownlinkConfig');
 const s3RecordingConfig = new S3RecordingConfig(stack, 'S3RecordingConfig');
+const antennaDownlinkConfig = new AntennaDownlinkConfig(stack, 'AntennaDownlinkConfig');
 
 new MissionProfile(stack, 'GroundStationMissionProfile', {
   dataflowEdges: [new DataflowEdge(antennaDownlinkConfig, s3RecordingConfig)],

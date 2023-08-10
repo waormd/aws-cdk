@@ -21,7 +21,7 @@ export interface Frequency {
 }
 
 export interface Eirp {
-  readonly units?: FrequencyUnit,
+  readonly units?: string,
   readonly value?: number
 }
 

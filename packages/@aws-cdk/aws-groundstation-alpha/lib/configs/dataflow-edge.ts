@@ -4,8 +4,8 @@ export class DataflowEdge {
   readonly destination: BaseDataflowPoint
   readonly source: BaseDataflowPoint
 
-  constructor(destination: BaseDataflowPoint, source: BaseDataflowPoint) {
-    this.destination = destination;
+  constructor(source: BaseDataflowPoint, destination: BaseDataflowPoint) {
     this.source = source;
+    this.destination = destination;
   }
 }

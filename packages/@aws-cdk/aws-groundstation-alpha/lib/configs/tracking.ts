@@ -17,7 +17,7 @@ export class TrackingConfig extends Resource {
   public readonly arn: string
   constructor(scope: Construct, id: string, props: TrackingConfigProps = {}) {
     super(scope, id);
-    this.arn = new CfnConfig(scope, 'Resource', {
+    this.arn = new CfnConfig(scope, 'TrackingConfigResource', {
       name: props.name ?? id,
       configData: {
         trackingConfig: {

@@ -1,9 +1,17 @@
-import { Construct } from 'constructs';
-import { DecodeConfig, DemodulationConfig, Eirp, SpectrumConfig, UplinkSpectrumConfig } from './signals';
-import { Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
-import { Bucket } from 'aws-cdk-lib/aws-s3';
 import { Resource } from 'aws-cdk-lib';
 import { CfnConfig } from 'aws-cdk-lib/aws-groundstation';
+import { Effect, PolicyDocument, PolicyStatement, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
+import { Bucket } from 'aws-cdk-lib/aws-s3';
+import { Construct } from 'constructs';
+import {
+  DecodeConfig,
+  DemodulationConfig,
+  Eirp,
+  FrequencyUnit,
+  Polarization,
+  SpectrumConfig,
+  UplinkSpectrumConfig,
+} from './signals';
 
 export interface AntennaDownlinkConfigProps {
   readonly name?: string,
@@ -16,22 +24,23 @@ export abstract class BaseDataflowPoint extends Resource {
 
 export class AntennaDownlinkConfig extends BaseDataflowPoint {
   public readonly arn: string
+
   constructor(scope: Construct, id: string, props: AntennaDownlinkConfigProps = {}) {
     super(scope, id);
-    this.arn = new CfnConfig(scope, 'Resource', {
+    this.arn = new CfnConfig(scope, 'AntennaDownlinkConfigResource', {
       name: props.name ?? id,
       configData: {
         antennaDownlinkConfig: {
           spectrumConfig: {
-            bandwidth: {
-              units: props?.spectrumConfig?.bandwidth?.units,
-              value: props?.spectrumConfig?.bandwidth?.value,
-            },
             centerFrequency: {
-              units: props?.spectrumConfig?.centerFrequency?.units,
-              value: props?.spectrumConfig?.centerFrequency?.value,
+              value: props?.spectrumConfig?.centerFrequency?.value ?? 7812,
+              units: props?.spectrumConfig?.centerFrequency?.units ?? FrequencyUnit.MHZ,
             },
-            polarization: props?.spectrumConfig?.polarization,
+            bandwidth: {
+              value: props?.spectrumConfig?.bandwidth?.value ?? 30,
+              units: props?.spectrumConfig?.bandwidth?.units ?? FrequencyUnit.MHZ,
+            },
+            polarization: props?.spectrumConfig?.polarization ?? Polarization.RIGHT_HAND,
           },
         },
       },
@@ -48,9 +57,10 @@ export interface AntennaDownlinkDemodDecodeConfigProps {
 
 export class AntennaDownlinkDemodDecodeConfig extends BaseDataflowPoint {
   public readonly arn: string
+
   constructor(scope: Construct, id: string, props: AntennaDownlinkDemodDecodeConfigProps = {}) {
     super(scope, id);
-    this.arn = new CfnConfig(scope, 'Resource', {
+    this.arn = new CfnConfig(scope, 'AntennaDownlinkDemodDecodeConfigResource', {
       name: props.name ?? id,
       configData: {
         antennaDownlinkDemodDecodeConfig: {
@@ -61,15 +71,15 @@ export class AntennaDownlinkDemodDecodeConfig extends BaseDataflowPoint {
             unvalidatedJson: props.demodulationConfig?.unvalidatedJson,
           },
           spectrumConfig: {
-            bandwidth: {
-              units: props.spectrumConfig?.bandwidth?.units,
-              value: props.spectrumConfig?.bandwidth?.value,
-            },
             centerFrequency: {
-              units: props.spectrumConfig?.centerFrequency?.units,
-              value: props.spectrumConfig?.centerFrequency?.value,
+              value: props.spectrumConfig?.centerFrequency?.value ?? 7812,
+              units: props.spectrumConfig?.centerFrequency?.units ?? FrequencyUnit.MHZ,
             },
-            polarization: props.spectrumConfig?.polarization,
+            bandwidth: {
+              value: props.spectrumConfig?.bandwidth?.value ?? 30,
+              units: props.spectrumConfig?.bandwidth?.units ?? FrequencyUnit.MHZ,
+            },
+            polarization: props.spectrumConfig?.polarization ?? Polarization.RIGHT_HAND,
           },
         },
       },
@@ -86,17 +96,24 @@ export interface AntennaUplinkConfigProps {
 
 export class AntennaUplinkConfig extends BaseDataflowPoint {
   public readonly arn: string
+
   constructor(scope: Construct, id: string, props: AntennaUplinkConfigProps = {}) {
     super(scope, id);
-    this.arn = new CfnConfig(scope, 'Resource', {
+    this.arn = new CfnConfig(scope, 'AntennaUplinkConfigResource', {
       name: props.name ?? id,
       configData: {
         antennaUplinkConfig: {
           spectrumConfig: {
-            centerFrequency: props.spectrumConfig?.centerFrequency,
-            polarization: props.spectrumConfig?.polarization,
+            centerFrequency: {
+              value: props.spectrumConfig?.centerFrequency?.value ?? 2072.5,
+              units: props.spectrumConfig?.centerFrequency?.units ?? FrequencyUnit.MHZ,
+            },
+            polarization: props.spectrumConfig?.polarization ?? Polarization.RIGHT_HAND,
           },
-          targetEirp: props.targetEirp,
+          targetEirp: {
+            value: props.targetEirp?.value ?? 20,
+            units: props.targetEirp?.units ?? 'dBW',
+          },
           transmitDisabled: props.transmitDisabled ?? false,
         },
       },
@@ -112,9 +129,10 @@ export interface DataflowEndpointConfigProps {
 
 export class DataflowEndpointConfig extends BaseDataflowPoint {
   public readonly arn: string
+
   constructor(scope: Construct, id: string, props: DataflowEndpointConfigProps) {
     super(scope, id);
-    this.arn = new CfnConfig(scope, 'Resource', {
+    this.arn = new CfnConfig(scope, 'DataflowEndpointConfigResource', {
       name: props.name ?? id,
       configData: {
         dataflowEndpointConfig: {
@@ -134,9 +152,10 @@ export interface UplinkEchoConfigProps {
 
 export class UplinkEchoConfig extends BaseDataflowPoint {
   public readonly arn: string
+
   constructor(scope: Construct, id: string, props: UplinkEchoConfigProps) {
     super(scope, id);
-    this.arn = new CfnConfig(scope, 'Resource', {
+    this.arn = new CfnConfig(scope, 'UplinkEchoConfigResource', {
       name: props.name ?? id,
       configData: {
         uplinkEchoConfig: {
@@ -157,26 +176,49 @@ export interface S3RecordingConfigProps {
 
 export class S3RecordingConfig extends BaseDataflowPoint {
   public readonly arn: string;
-  public readonly bucket: Bucket;
-  public readonly role: Role;
 
   constructor(scope: Construct, id: string, props: S3RecordingConfigProps = {}) {
     super(scope, id);
-    this.role = props.role ?? new Role(this, 'Role', { assumedBy: new ServicePrincipal('groundstation.amazonaws.com') });
-    this.bucket = props.bucket ?? new Bucket(this, 'Bucket');
 
-    if (!props.role || !props.bucket) {
-      this.bucket.grantWrite(this.role);
-    }
+    const bucket = props.bucket ?? new Bucket(this, 'Bucket', { bucketName: `aws-groundstation.generated.${this.randomString()}` });
+    const role = props.role ?? this.s3DeliveryRole(bucket.bucketArn);
 
-    this.arn = new CfnConfig(scope, 'Resource', {
+    this.arn = new CfnConfig(scope, 'S3RecordingConfigResource', {
       name: props.name ?? id,
       configData: {
         s3RecordingConfig: {
-          bucketArn: this.bucket.bucketArn,
-          roleArn: this.role.roleArn,
+          bucketArn: bucket.bucketArn,
+          roleArn: role.roleArn,
+          prefix: props.prefix,
         },
       },
     }).attrArn;
+  }
+
+  private s3DeliveryRole(bucketArn: string) {
+    return new Role(this, 'Role', {
+      assumedBy: new ServicePrincipal('groundstation.amazonaws.com'),
+      inlinePolicies: {
+        groundStationPolicies: new PolicyDocument({
+          statements: [
+            new PolicyStatement({
+              resources: [
+                bucketArn,
+                `${bucketArn}/*`,
+              ],
+              actions: [
+                's3:GetBucketLocation',
+                's3:PutObject',
+              ],
+              effect: Effect.ALLOW,
+            }),
+          ],
+        }),
+      },
+    });
+  }
+
+  private randomString(): string {
+    return Math.random().toString(36).replace(/[^a-z0-9]+/g, '').substring(5);
   }
 }

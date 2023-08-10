@@ -1,0 +1,19 @@
+{
+  "version": "33.0.0",
+  "files": {
+    "780ac9d67bc1b688d5c4d08c7e4dfe6bd699b0687c21d2a225e1cdbac3765145": {
+      "source": {
+        "path": "aws-cdk-ground-station-1.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "780ac9d67bc1b688d5c4d08c7e4dfe6bd699b0687c21d2a225e1cdbac3765145.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

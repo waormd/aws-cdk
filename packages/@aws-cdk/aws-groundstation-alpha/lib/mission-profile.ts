@@ -1,6 +1,6 @@
 import { Resource, Tag } from 'aws-cdk-lib';
 import { CfnMissionProfile } from 'aws-cdk-lib/aws-groundstation';
-import { Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
+import { Effect, PolicyDocument, PolicyStatement, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Construct } from 'constructs';
 import { DataflowEdge } from './configs/dataflow-edge';
@@ -27,7 +27,7 @@ export class MissionProfile extends Resource {
     super(scope, id);
 
     this.kmsKey = props.streamsKmsKey ?? new Key(this, 'Key');
-    this.kmsRole = props.streamsKmsRole ?? new Role(this, 'Role', { assumedBy: new ServicePrincipal('groundstation.amazonaws.com') });
+    this.kmsRole = props.streamsKmsRole ?? this.kmsKeyRole(this.kmsKey.keyArn);
 
     new CfnMissionProfile(scope, 'Resource', {
       name: props.name ?? id,
@@ -44,6 +44,27 @@ export class MissionProfile extends Resource {
           source: edge.source.arn,
         };
       }),
+    });
+  }
+
+  private kmsKeyRole(keyArn: string) {
+    return new Role(this, 'Role', {
+      assumedBy: new ServicePrincipal('groundstation.amazonaws.com'),
+      inlinePolicies: {
+        groundStationPolicies: new PolicyDocument({
+          statements: [
+            new PolicyStatement({
+              resources: [
+                keyArn,
+              ],
+              actions: [
+                'kms:Decrypt',
+              ],
+              effect: Effect.ALLOW,
+            }),
+          ],
+        }),
+      },
     });
   }
 }
