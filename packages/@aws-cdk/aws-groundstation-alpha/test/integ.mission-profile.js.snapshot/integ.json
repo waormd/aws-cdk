@@ -1,0 +1,12 @@
+{
+  "version": "33.0.0",
+  "testCases": {
+    "GroundStationMissionProfileTest/DefaultTest": {
+      "stacks": [
+        "aws-cdk-ground-station-1"
+      ],
+      "assertionStack": "GroundStationMissionProfileTest/DefaultTest/DeployAssert",
+      "assertionStackName": "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44"
+    }
+  }
+}

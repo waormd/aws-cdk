@@ -1,0 +1,488 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "aws-cdk-ground-station-1": {
+        "id": "aws-cdk-ground-station-1",
+        "path": "aws-cdk-ground-station-1",
+        "children": {
+          "S3RecordingConfig": {
+            "id": "S3RecordingConfig",
+            "path": "aws-cdk-ground-station-1/S3RecordingConfig",
+            "children": {
+              "Bucket": {
+                "id": "Bucket",
+                "path": "aws-cdk-ground-station-1/S3RecordingConfig/Bucket",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "aws-cdk-ground-station-1/S3RecordingConfig/Bucket/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                      "aws:cdk:cloudformation:props": {
+                        "bucketName": "aws-groundstation.generated.hsfwqik"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
+                      "version": "0.0.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.Bucket",
+                  "version": "0.0.0"
+                }
+              },
+              "Role": {
+                "id": "Role",
+                "path": "aws-cdk-ground-station-1/S3RecordingConfig/Role",
+                "children": {
+                  "ImportRole": {
+                    "id": "ImportRole",
+                    "path": "aws-cdk-ground-station-1/S3RecordingConfig/Role/ImportRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "0.0.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "aws-cdk-ground-station-1/S3RecordingConfig/Role/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "groundstation.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policies": [
+                          {
+                            "policyName": "groundStationPolicies",
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "s3:GetBucketLocation",
+                                    "s3:PutObject"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::GetAtt": [
+                                        "S3RecordingConfigBucketF30B38DE",
+                                        "Arn"
+                                      ]
+                                    },
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          {
+                                            "Fn::GetAtt": [
+                                              "S3RecordingConfigBucketF30B38DE",
+                                              "Arn"
+                                            ]
+                                          },
+                                          "/*"
+                                        ]
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "0.0.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "0.0.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-groundstation-alpha.S3RecordingConfig",
+              "version": "0.0.0"
+            }
+          },
+          "S3RecordingConfigResource": {
+            "id": "S3RecordingConfigResource",
+            "path": "aws-cdk-ground-station-1/S3RecordingConfigResource",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::GroundStation::Config",
+              "aws:cdk:cloudformation:props": {
+                "configData": {
+                  "s3RecordingConfig": {
+                    "bucketArn": {
+                      "Fn::GetAtt": [
+                        "S3RecordingConfigBucketF30B38DE",
+                        "Arn"
+                      ]
+                    },
+                    "roleArn": {
+                      "Fn::GetAtt": [
+                        "S3RecordingConfigRoleD0DB223E",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "name": "S3RecordingConfig"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_groundstation.CfnConfig",
+              "version": "0.0.0"
+            }
+          },
+          "AntennaDownlinkConfig": {
+            "id": "AntennaDownlinkConfig",
+            "path": "aws-cdk-ground-station-1/AntennaDownlinkConfig",
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-groundstation-alpha.AntennaDownlinkConfig",
+              "version": "0.0.0"
+            }
+          },
+          "AntennaDownlinkConfigResource": {
+            "id": "AntennaDownlinkConfigResource",
+            "path": "aws-cdk-ground-station-1/AntennaDownlinkConfigResource",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::GroundStation::Config",
+              "aws:cdk:cloudformation:props": {
+                "configData": {
+                  "antennaDownlinkConfig": {
+                    "spectrumConfig": {
+                      "centerFrequency": {
+                        "value": 7812,
+                        "units": "MHz"
+                      },
+                      "bandwidth": {
+                        "value": 30,
+                        "units": "MHz"
+                      },
+                      "polarization": "RIGHT_HAND"
+                    }
+                  }
+                },
+                "name": "AntennaDownlinkConfig"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_groundstation.CfnConfig",
+              "version": "0.0.0"
+            }
+          },
+          "GroundStationMissionProfile": {
+            "id": "GroundStationMissionProfile",
+            "path": "aws-cdk-ground-station-1/GroundStationMissionProfile",
+            "children": {
+              "Key": {
+                "id": "Key",
+                "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/Key",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/Key/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::KMS::Key",
+                      "aws:cdk:cloudformation:props": {
+                        "keyPolicy": {
+                          "Statement": [
+                            {
+                              "Action": "kms:*",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "AWS": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":iam::",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":root"
+                                    ]
+                                  ]
+                                }
+                              },
+                              "Resource": "*"
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_kms.CfnKey",
+                      "version": "0.0.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_kms.Key",
+                  "version": "0.0.0"
+                }
+              },
+              "Role": {
+                "id": "Role",
+                "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/Role",
+                "children": {
+                  "ImportRole": {
+                    "id": "ImportRole",
+                    "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/Role/ImportRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "0.0.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/Role/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "groundstation.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policies": [
+                          {
+                            "policyName": "groundStationPolicies",
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "kms:Decrypt",
+                                  "Effect": "Allow",
+                                  "Resource": {
+                                    "Fn::GetAtt": [
+                                      "GroundStationMissionProfileKey0B7F84D0",
+                                      "Arn"
+                                    ]
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "0.0.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "0.0.0"
+                }
+              },
+              "TrackingConfig": {
+                "id": "TrackingConfig",
+                "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/TrackingConfig",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-groundstation-alpha.TrackingConfig",
+                  "version": "0.0.0"
+                }
+              },
+              "TrackingConfigResource": {
+                "id": "TrackingConfigResource",
+                "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/TrackingConfigResource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::GroundStation::Config",
+                  "aws:cdk:cloudformation:props": {
+                    "configData": {
+                      "trackingConfig": {
+                        "autotrack": "PREFERRED"
+                      }
+                    },
+                    "name": "TrackingConfig"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_groundstation.CfnConfig",
+                  "version": "0.0.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-groundstation-alpha.MissionProfile",
+              "version": "0.0.0"
+            }
+          },
+          "Resource": {
+            "id": "Resource",
+            "path": "aws-cdk-ground-station-1/Resource",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::GroundStation::MissionProfile",
+              "aws:cdk:cloudformation:props": {
+                "contactPostPassDurationSeconds": 100,
+                "contactPrePassDurationSeconds": 100,
+                "dataflowEdges": [
+                  {
+                    "destination": {
+                      "Fn::GetAtt": [
+                        "S3RecordingConfigResource",
+                        "Arn"
+                      ]
+                    },
+                    "source": {
+                      "Fn::GetAtt": [
+                        "AntennaDownlinkConfigResource",
+                        "Arn"
+                      ]
+                    }
+                  }
+                ],
+                "minimumViableContactDurationSeconds": 100,
+                "name": "GroundStationMissionProfile",
+                "streamsKmsKey": {
+                  "kmsKeyArn": {
+                    "Fn::GetAtt": [
+                      "GroundStationMissionProfileKey0B7F84D0",
+                      "Arn"
+                    ]
+                  }
+                },
+                "streamsKmsRole": {
+                  "Fn::GetAtt": [
+                    "GroundStationMissionProfileRoleF16878F2",
+                    "Arn"
+                  ]
+                },
+                "trackingConfigArn": {
+                  "Fn::GetAtt": [
+                    "GroundStationMissionProfileTrackingConfigResource8AE05648",
+                    "Arn"
+                  ]
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_groundstation.CfnMissionProfile",
+              "version": "0.0.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "aws-cdk-ground-station-1/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "0.0.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "aws-cdk-ground-station-1/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "0.0.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "0.0.0"
+        }
+      },
+      "GroundStationMissionProfileTest": {
+        "id": "GroundStationMissionProfileTest",
+        "path": "GroundStationMissionProfileTest",
+        "children": {
+          "DefaultTest": {
+            "id": "DefaultTest",
+            "path": "GroundStationMissionProfileTest/DefaultTest",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "GroundStationMissionProfileTest/DefaultTest/Default",
+                "constructInfo": {
+                  "fqn": "constructs.Construct",
+                  "version": "10.2.69"
+                }
+              },
+              "DeployAssert": {
+                "id": "DeployAssert",
+                "path": "GroundStationMissionProfileTest/DefaultTest/DeployAssert",
+                "children": {
+                  "BootstrapVersion": {
+                    "id": "BootstrapVersion",
+                    "path": "GroundStationMissionProfileTest/DefaultTest/DeployAssert/BootstrapVersion",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnParameter",
+                      "version": "0.0.0"
+                    }
+                  },
+                  "CheckBootstrapVersion": {
+                    "id": "CheckBootstrapVersion",
+                    "path": "GroundStationMissionProfileTest/DefaultTest/DeployAssert/CheckBootstrapVersion",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnRule",
+                      "version": "0.0.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Stack",
+                  "version": "0.0.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/integ-tests-alpha.IntegTestCase",
+              "version": "0.0.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "@aws-cdk/integ-tests-alpha.IntegTest",
+          "version": "0.0.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.2.69"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "0.0.0"
+    }
+  }
+}
