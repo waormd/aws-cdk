@@ -1,9 +1,30 @@
 {
  "Resources": {
+  "AntennaDownlinkConfigResource": {
+   "Type": "AWS::GroundStation::Config",
+   "Properties": {
+    "ConfigData": {
+     "AntennaDownlinkConfig": {
+      "SpectrumConfig": {
+       "Bandwidth": {
+        "Units": "MHz",
+        "Value": 30
+       },
+       "CenterFrequency": {
+        "Units": "MHz",
+        "Value": 7812
+       },
+       "Polarization": "RIGHT_HAND"
+      }
+     }
+    },
+    "Name": "AntennaDownlinkConfig"
+   }
+  },
   "S3RecordingConfigBucketF30B38DE": {
    "Type": "AWS::S3::Bucket",
    "Properties": {
-    "BucketName": "aws-groundstation.generated.hsfwqik"
+    "BucketName": "aws-groundstation.s3recordingconfig"
    },
    "UpdateReplacePolicy": "Retain",
    "DeletionPolicy": "Retain"
@@ -84,27 +105,6 @@
      }
     },
     "Name": "S3RecordingConfig"
-   }
-  },
-  "AntennaDownlinkConfigResource": {
-   "Type": "AWS::GroundStation::Config",
-   "Properties": {
-    "ConfigData": {
-     "AntennaDownlinkConfig": {
-      "SpectrumConfig": {
-       "Bandwidth": {
-        "Units": "MHz",
-        "Value": 30
-       },
-       "CenterFrequency": {
-        "Units": "MHz",
-        "Value": 7812
-       },
-       "Polarization": "RIGHT_HAND"
-      }
-     }
-    },
-    "Name": "AntennaDownlinkConfig"
    }
   },
   "GroundStationMissionProfileKey0B7F84D0": {

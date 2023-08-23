@@ -180,7 +180,7 @@ export class S3RecordingConfig extends BaseDataflowPoint {
   constructor(scope: Construct, id: string, props: S3RecordingConfigProps = {}) {
     super(scope, id);
 
-    const bucket = props.bucket ?? new Bucket(this, 'Bucket', { bucketName: `aws-groundstation.generated.${this.randomString()}` });
+    const bucket = props.bucket ?? new Bucket(this, 'Bucket', { bucketName: `aws-groundstation.${id.toLowerCase()}` });
     const role = props.role ?? this.s3DeliveryRole(bucket.bucketArn);
 
     this.arn = new CfnConfig(scope, 'S3RecordingConfigResource', {
@@ -216,9 +216,5 @@ export class S3RecordingConfig extends BaseDataflowPoint {
         }),
       },
     });
-  }
-
-  private randomString(): string {
-    return Math.random().toString(36).replace(/[^a-z0-9]+/g, '').substring(5);
   }
 }

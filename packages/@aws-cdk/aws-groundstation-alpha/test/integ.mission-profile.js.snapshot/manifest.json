@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/780ac9d67bc1b688d5c4d08c7e4dfe6bd699b0687c21d2a225e1cdbac3765145.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b87a085c66f986a7bd76b737ad977f4b6a423047ae868a39a929d92c592855c1.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -33,6 +33,12 @@
         "aws-cdk-ground-station-1.assets"
       ],
       "metadata": {
+        "/aws-cdk-ground-station-1/AntennaDownlinkConfigResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AntennaDownlinkConfigResource"
+          }
+        ],
         "/aws-cdk-ground-station-1/S3RecordingConfig/Bucket/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -49,12 +55,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "S3RecordingConfigResource"
-          }
-        ],
-        "/aws-cdk-ground-station-1/AntennaDownlinkConfigResource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "AntennaDownlinkConfigResource"
           }
         ],
         "/aws-cdk-ground-station-1/GroundStationMissionProfile/Key/Resource": [

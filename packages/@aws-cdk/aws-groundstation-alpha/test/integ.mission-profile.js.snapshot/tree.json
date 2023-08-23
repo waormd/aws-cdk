@@ -8,6 +8,43 @@
         "id": "aws-cdk-ground-station-1",
         "path": "aws-cdk-ground-station-1",
         "children": {
+          "AntennaDownlinkConfig": {
+            "id": "AntennaDownlinkConfig",
+            "path": "aws-cdk-ground-station-1/AntennaDownlinkConfig",
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-groundstation-alpha.AntennaDownlinkConfig",
+              "version": "0.0.0"
+            }
+          },
+          "AntennaDownlinkConfigResource": {
+            "id": "AntennaDownlinkConfigResource",
+            "path": "aws-cdk-ground-station-1/AntennaDownlinkConfigResource",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::GroundStation::Config",
+              "aws:cdk:cloudformation:props": {
+                "configData": {
+                  "antennaDownlinkConfig": {
+                    "spectrumConfig": {
+                      "centerFrequency": {
+                        "value": 7812,
+                        "units": "MHz"
+                      },
+                      "bandwidth": {
+                        "value": 30,
+                        "units": "MHz"
+                      },
+                      "polarization": "RIGHT_HAND"
+                    }
+                  }
+                },
+                "name": "AntennaDownlinkConfig"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_groundstation.CfnConfig",
+              "version": "0.0.0"
+            }
+          },
           "S3RecordingConfig": {
             "id": "S3RecordingConfig",
             "path": "aws-cdk-ground-station-1/S3RecordingConfig",
@@ -22,7 +59,7 @@
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
                       "aws:cdk:cloudformation:props": {
-                        "bucketName": "aws-groundstation.generated.hsfwqik"
+                        "bucketName": "aws-groundstation.s3recordingconfig"
                       }
                     },
                     "constructInfo": {
@@ -147,43 +184,6 @@
                   }
                 },
                 "name": "S3RecordingConfig"
-              }
-            },
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_groundstation.CfnConfig",
-              "version": "0.0.0"
-            }
-          },
-          "AntennaDownlinkConfig": {
-            "id": "AntennaDownlinkConfig",
-            "path": "aws-cdk-ground-station-1/AntennaDownlinkConfig",
-            "constructInfo": {
-              "fqn": "@aws-cdk/aws-groundstation-alpha.AntennaDownlinkConfig",
-              "version": "0.0.0"
-            }
-          },
-          "AntennaDownlinkConfigResource": {
-            "id": "AntennaDownlinkConfigResource",
-            "path": "aws-cdk-ground-station-1/AntennaDownlinkConfigResource",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::GroundStation::Config",
-              "aws:cdk:cloudformation:props": {
-                "configData": {
-                  "antennaDownlinkConfig": {
-                    "spectrumConfig": {
-                      "centerFrequency": {
-                        "value": 7812,
-                        "units": "MHz"
-                      },
-                      "bandwidth": {
-                        "value": 30,
-                        "units": "MHz"
-                      },
-                      "polarization": "RIGHT_HAND"
-                    }
-                  }
-                },
-                "name": "AntennaDownlinkConfig"
               }
             },
             "constructInfo": {
