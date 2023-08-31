@@ -1,0 +1,19 @@
+{
+  "version": "33.0.0",
+  "files": {
+    "f0076a87566b5ea1b7fa3a6037222d70b7a18bcff5b8abd184d5d567eb4d7397": {
+      "source": {
+        "path": "aws-groundstation-antenna-downlink-config.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "f0076a87566b5ea1b7fa3a6037222d70b7a18bcff5b8abd184d5d567eb4d7397.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

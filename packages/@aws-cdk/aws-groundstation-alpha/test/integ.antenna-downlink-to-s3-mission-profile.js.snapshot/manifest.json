@@ -1,0 +1,153 @@
+{
+  "version": "33.0.0",
+  "artifacts": {
+    "aws-groundstation-antenna-downlink-to-s3-mission-profile.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "aws-groundstation-antenna-downlink-to-s3-mission-profile.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "aws-groundstation-antenna-downlink-to-s3-mission-profile": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "aws-groundstation-antenna-downlink-to-s3-mission-profile.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0f56f464c912e9299fb595c96eb0ed287c3c1d1054e2ca6739607657d2546693.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "aws-groundstation-antenna-downlink-to-s3-mission-profile.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "aws-groundstation-antenna-downlink-to-s3-mission-profile.assets"
+      ],
+      "metadata": {
+        "/aws-groundstation-antenna-downlink-to-s3-mission-profile/AntennaDownlinkConfigResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AntennaDownlinkConfigResource"
+          }
+        ],
+        "/aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigEdge/Bucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3RecordingConfigEdgeBucket6815E569"
+          }
+        ],
+        "/aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigEdge/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3RecordingConfigEdgeRoleF5DF21ED"
+          }
+        ],
+        "/aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3RecordingConfigResource"
+          }
+        ],
+        "/aws-groundstation-antenna-downlink-to-s3-mission-profile/GroundStationMissionProfile/Key/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GroundStationMissionProfileKey0B7F84D0"
+          }
+        ],
+        "/aws-groundstation-antenna-downlink-to-s3-mission-profile/GroundStationMissionProfile/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GroundStationMissionProfileRoleF16878F2"
+          }
+        ],
+        "/aws-groundstation-antenna-downlink-to-s3-mission-profile/GroundStationMissionProfile/TrackingConfigResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GroundStationMissionProfileTrackingConfigResource8AE05648"
+          }
+        ],
+        "/aws-groundstation-antenna-downlink-to-s3-mission-profile/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Resource"
+          }
+        ],
+        "/aws-groundstation-antenna-downlink-to-s3-mission-profile/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/aws-groundstation-antenna-downlink-to-s3-mission-profile/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "aws-groundstation-antenna-downlink-to-s3-mission-profile"
+    },
+    "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/21fbb51d7b23f6a6c262b46a9caee79d744a3ac019fd45422d988b96d44b2a22.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets"
+      ],
+      "metadata": {
+        "/GroundStationMissionProfileTest/DefaultTest/DeployAssert/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/GroundStationMissionProfileTest/DefaultTest/DeployAssert/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "GroundStationMissionProfileTest/DefaultTest/DeployAssert"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

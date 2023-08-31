@@ -1,0 +1,123 @@
+{
+  "version": "33.0.0",
+  "artifacts": {
+    "aws-s3-recording-config.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "aws-s3-recording-config.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "aws-s3-recording-config": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "aws-s3-recording-config.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/03c6e19c4afd705079d00c78d67820edf3b19f8b96c56f5b73df63354a222847.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "aws-s3-recording-config.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "aws-s3-recording-config.assets"
+      ],
+      "metadata": {
+        "/aws-s3-recording-config/S3RecordingConfig/Bucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3RecordingConfigBucketF30B38DE"
+          }
+        ],
+        "/aws-s3-recording-config/S3RecordingConfig/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3RecordingConfigRoleD0DB223E"
+          }
+        ],
+        "/aws-s3-recording-config/S3RecordingConfigResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3RecordingConfigResource"
+          }
+        ],
+        "/aws-s3-recording-config/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/aws-s3-recording-config/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "aws-s3-recording-config"
+    },
+    "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/21fbb51d7b23f6a6c262b46a9caee79d744a3ac019fd45422d988b96d44b2a22.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets"
+      ],
+      "metadata": {
+        "/GroundStationMissionProfileTest/DefaultTest/DeployAssert/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/GroundStationMissionProfileTest/DefaultTest/DeployAssert/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "GroundStationMissionProfileTest/DefaultTest/DeployAssert"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

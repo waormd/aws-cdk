@@ -1,0 +1,12 @@
+{
+  "version": "33.0.0",
+  "testCases": {
+    "GroundStationMissionProfileTest/DefaultTest": {
+      "stacks": [
+        "aws-groundstation-antenna-downlink-to-s3-mission-profile"
+      ],
+      "assertionStack": "GroundStationMissionProfileTest/DefaultTest/DeployAssert",
+      "assertionStackName": "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44"
+    }
+  }
+}

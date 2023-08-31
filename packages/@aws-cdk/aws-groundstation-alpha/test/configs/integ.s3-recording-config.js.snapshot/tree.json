@@ -1,0 +1,247 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "aws-s3-recording-config": {
+        "id": "aws-s3-recording-config",
+        "path": "aws-s3-recording-config",
+        "children": {
+          "S3RecordingConfig": {
+            "id": "S3RecordingConfig",
+            "path": "aws-s3-recording-config/S3RecordingConfig",
+            "children": {
+              "Bucket": {
+                "id": "Bucket",
+                "path": "aws-s3-recording-config/S3RecordingConfig/Bucket",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "aws-s3-recording-config/S3RecordingConfig/Bucket/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                      "aws:cdk:cloudformation:props": {
+                        "bucketName": "aws-groundstation.s3recordingconfig"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
+                      "version": "0.0.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.Bucket",
+                  "version": "0.0.0"
+                }
+              },
+              "Role": {
+                "id": "Role",
+                "path": "aws-s3-recording-config/S3RecordingConfig/Role",
+                "children": {
+                  "ImportRole": {
+                    "id": "ImportRole",
+                    "path": "aws-s3-recording-config/S3RecordingConfig/Role/ImportRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "0.0.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "aws-s3-recording-config/S3RecordingConfig/Role/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "groundstation.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policies": [
+                          {
+                            "policyName": "groundStationPolicies",
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "s3:GetBucketLocation",
+                                    "s3:PutObject"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::GetAtt": [
+                                        "S3RecordingConfigBucketF30B38DE",
+                                        "Arn"
+                                      ]
+                                    },
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          {
+                                            "Fn::GetAtt": [
+                                              "S3RecordingConfigBucketF30B38DE",
+                                              "Arn"
+                                            ]
+                                          },
+                                          "/*"
+                                        ]
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "0.0.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "0.0.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-groundstation-alpha.S3RecordingConfig",
+              "version": "0.0.0"
+            }
+          },
+          "S3RecordingConfigResource": {
+            "id": "S3RecordingConfigResource",
+            "path": "aws-s3-recording-config/S3RecordingConfigResource",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::GroundStation::Config",
+              "aws:cdk:cloudformation:props": {
+                "configData": {
+                  "s3RecordingConfig": {
+                    "bucketArn": {
+                      "Fn::GetAtt": [
+                        "S3RecordingConfigBucketF30B38DE",
+                        "Arn"
+                      ]
+                    },
+                    "roleArn": {
+                      "Fn::GetAtt": [
+                        "S3RecordingConfigRoleD0DB223E",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "name": "S3RecordingConfig"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_groundstation.CfnConfig",
+              "version": "0.0.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "aws-s3-recording-config/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "0.0.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "aws-s3-recording-config/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "0.0.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "0.0.0"
+        }
+      },
+      "GroundStationMissionProfileTest": {
+        "id": "GroundStationMissionProfileTest",
+        "path": "GroundStationMissionProfileTest",
+        "children": {
+          "DefaultTest": {
+            "id": "DefaultTest",
+            "path": "GroundStationMissionProfileTest/DefaultTest",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "GroundStationMissionProfileTest/DefaultTest/Default",
+                "constructInfo": {
+                  "fqn": "constructs.Construct",
+                  "version": "10.2.69"
+                }
+              },
+              "DeployAssert": {
+                "id": "DeployAssert",
+                "path": "GroundStationMissionProfileTest/DefaultTest/DeployAssert",
+                "children": {
+                  "BootstrapVersion": {
+                    "id": "BootstrapVersion",
+                    "path": "GroundStationMissionProfileTest/DefaultTest/DeployAssert/BootstrapVersion",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnParameter",
+                      "version": "0.0.0"
+                    }
+                  },
+                  "CheckBootstrapVersion": {
+                    "id": "CheckBootstrapVersion",
+                    "path": "GroundStationMissionProfileTest/DefaultTest/DeployAssert/CheckBootstrapVersion",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnRule",
+                      "version": "0.0.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Stack",
+                  "version": "0.0.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/integ-tests-alpha.IntegTestCase",
+              "version": "0.0.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "@aws-cdk/integ-tests-alpha.IntegTest",
+          "version": "0.0.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.2.69"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "0.0.0"
+    }
+  }
+}

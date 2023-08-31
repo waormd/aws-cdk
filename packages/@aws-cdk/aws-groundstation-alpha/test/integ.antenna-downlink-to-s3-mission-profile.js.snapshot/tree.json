@@ -4,13 +4,13 @@
     "id": "App",
     "path": "",
     "children": {
-      "aws-cdk-ground-station-1": {
-        "id": "aws-cdk-ground-station-1",
-        "path": "aws-cdk-ground-station-1",
+      "aws-groundstation-antenna-downlink-to-s3-mission-profile": {
+        "id": "aws-groundstation-antenna-downlink-to-s3-mission-profile",
+        "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile",
         "children": {
-          "AntennaDownlinkConfig": {
-            "id": "AntennaDownlinkConfig",
-            "path": "aws-cdk-ground-station-1/AntennaDownlinkConfig",
+          "AntennaDownlinkConfigEdge": {
+            "id": "AntennaDownlinkConfigEdge",
+            "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/AntennaDownlinkConfigEdge",
             "constructInfo": {
               "fqn": "@aws-cdk/aws-groundstation-alpha.AntennaDownlinkConfig",
               "version": "0.0.0"
@@ -18,7 +18,7 @@
           },
           "AntennaDownlinkConfigResource": {
             "id": "AntennaDownlinkConfigResource",
-            "path": "aws-cdk-ground-station-1/AntennaDownlinkConfigResource",
+            "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/AntennaDownlinkConfigResource",
             "attributes": {
               "aws:cdk:cloudformation:type": "AWS::GroundStation::Config",
               "aws:cdk:cloudformation:props": {
@@ -37,7 +37,7 @@
                     }
                   }
                 },
-                "name": "AntennaDownlinkConfig"
+                "name": "AntennaDownlinkConfigEdge"
               }
             },
             "constructInfo": {
@@ -45,21 +45,21 @@
               "version": "0.0.0"
             }
           },
-          "S3RecordingConfig": {
-            "id": "S3RecordingConfig",
-            "path": "aws-cdk-ground-station-1/S3RecordingConfig",
+          "S3RecordingConfigEdge": {
+            "id": "S3RecordingConfigEdge",
+            "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigEdge",
             "children": {
               "Bucket": {
                 "id": "Bucket",
-                "path": "aws-cdk-ground-station-1/S3RecordingConfig/Bucket",
+                "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigEdge/Bucket",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "aws-cdk-ground-station-1/S3RecordingConfig/Bucket/Resource",
+                    "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigEdge/Bucket/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
                       "aws:cdk:cloudformation:props": {
-                        "bucketName": "aws-groundstation.s3recordingconfig"
+                        "bucketName": "aws-groundstation.s3recordingconfigedge"
                       }
                     },
                     "constructInfo": {
@@ -75,11 +75,11 @@
               },
               "Role": {
                 "id": "Role",
-                "path": "aws-cdk-ground-station-1/S3RecordingConfig/Role",
+                "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigEdge/Role",
                 "children": {
                   "ImportRole": {
                     "id": "ImportRole",
-                    "path": "aws-cdk-ground-station-1/S3RecordingConfig/Role/ImportRole",
+                    "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigEdge/Role/ImportRole",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.Resource",
                       "version": "0.0.0"
@@ -87,7 +87,7 @@
                   },
                   "Resource": {
                     "id": "Resource",
-                    "path": "aws-cdk-ground-station-1/S3RecordingConfig/Role/Resource",
+                    "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigEdge/Role/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                       "aws:cdk:cloudformation:props": {
@@ -117,7 +117,7 @@
                                   "Resource": [
                                     {
                                       "Fn::GetAtt": [
-                                        "S3RecordingConfigBucketF30B38DE",
+                                        "S3RecordingConfigEdgeBucket6815E569",
                                         "Arn"
                                       ]
                                     },
@@ -127,7 +127,7 @@
                                         [
                                           {
                                             "Fn::GetAtt": [
-                                              "S3RecordingConfigBucketF30B38DE",
+                                              "S3RecordingConfigEdgeBucket6815E569",
                                               "Arn"
                                             ]
                                           },
@@ -163,7 +163,7 @@
           },
           "S3RecordingConfigResource": {
             "id": "S3RecordingConfigResource",
-            "path": "aws-cdk-ground-station-1/S3RecordingConfigResource",
+            "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigResource",
             "attributes": {
               "aws:cdk:cloudformation:type": "AWS::GroundStation::Config",
               "aws:cdk:cloudformation:props": {
@@ -171,19 +171,19 @@
                   "s3RecordingConfig": {
                     "bucketArn": {
                       "Fn::GetAtt": [
-                        "S3RecordingConfigBucketF30B38DE",
+                        "S3RecordingConfigEdgeBucket6815E569",
                         "Arn"
                       ]
                     },
                     "roleArn": {
                       "Fn::GetAtt": [
-                        "S3RecordingConfigRoleD0DB223E",
+                        "S3RecordingConfigEdgeRoleF5DF21ED",
                         "Arn"
                       ]
                     }
                   }
                 },
-                "name": "S3RecordingConfig"
+                "name": "S3RecordingConfigEdge"
               }
             },
             "constructInfo": {
@@ -193,15 +193,15 @@
           },
           "GroundStationMissionProfile": {
             "id": "GroundStationMissionProfile",
-            "path": "aws-cdk-ground-station-1/GroundStationMissionProfile",
+            "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/GroundStationMissionProfile",
             "children": {
               "Key": {
                 "id": "Key",
-                "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/Key",
+                "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/GroundStationMissionProfile/Key",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/Key/Resource",
+                    "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/GroundStationMissionProfile/Key/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::KMS::Key",
                       "aws:cdk:cloudformation:props": {
@@ -248,11 +248,11 @@
               },
               "Role": {
                 "id": "Role",
-                "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/Role",
+                "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/GroundStationMissionProfile/Role",
                 "children": {
                   "ImportRole": {
                     "id": "ImportRole",
-                    "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/Role/ImportRole",
+                    "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/GroundStationMissionProfile/Role/ImportRole",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.Resource",
                       "version": "0.0.0"
@@ -260,7 +260,7 @@
                   },
                   "Resource": {
                     "id": "Resource",
-                    "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/Role/Resource",
+                    "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/GroundStationMissionProfile/Role/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                       "aws:cdk:cloudformation:props": {
@@ -311,7 +311,7 @@
               },
               "TrackingConfig": {
                 "id": "TrackingConfig",
-                "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/TrackingConfig",
+                "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/GroundStationMissionProfile/TrackingConfig",
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-groundstation-alpha.TrackingConfig",
                   "version": "0.0.0"
@@ -319,7 +319,7 @@
               },
               "TrackingConfigResource": {
                 "id": "TrackingConfigResource",
-                "path": "aws-cdk-ground-station-1/GroundStationMissionProfile/TrackingConfigResource",
+                "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/GroundStationMissionProfile/TrackingConfigResource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::GroundStation::Config",
                   "aws:cdk:cloudformation:props": {
@@ -344,7 +344,7 @@
           },
           "Resource": {
             "id": "Resource",
-            "path": "aws-cdk-ground-station-1/Resource",
+            "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/Resource",
             "attributes": {
               "aws:cdk:cloudformation:type": "AWS::GroundStation::MissionProfile",
               "aws:cdk:cloudformation:props": {
@@ -397,7 +397,7 @@
           },
           "BootstrapVersion": {
             "id": "BootstrapVersion",
-            "path": "aws-cdk-ground-station-1/BootstrapVersion",
+            "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/BootstrapVersion",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "0.0.0"
@@ -405,7 +405,7 @@
           },
           "CheckBootstrapVersion": {
             "id": "CheckBootstrapVersion",
-            "path": "aws-cdk-ground-station-1/CheckBootstrapVersion",
+            "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile/CheckBootstrapVersion",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnRule",
               "version": "0.0.0"

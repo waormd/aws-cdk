@@ -3,7 +3,7 @@
   "testCases": {
     "GroundStationMissionProfileTest/DefaultTest": {
       "stacks": [
-        "aws-cdk-ground-station-1"
+        "aws-s3-recording-config"
       ],
       "assertionStack": "GroundStationMissionProfileTest/DefaultTest/DeployAssert",
       "assertionStackName": "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44"

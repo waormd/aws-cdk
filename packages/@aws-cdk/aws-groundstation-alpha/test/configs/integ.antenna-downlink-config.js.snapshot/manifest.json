@@ -1,27 +1,27 @@
 {
   "version": "33.0.0",
   "artifacts": {
-    "aws-cdk-ground-station-1.assets": {
+    "aws-groundstation-antenna-downlink-config.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "aws-cdk-ground-station-1.assets.json",
+        "file": "aws-groundstation-antenna-downlink-config.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
       }
     },
-    "aws-cdk-ground-station-1": {
+    "aws-groundstation-antenna-downlink-config": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://unknown-account/unknown-region",
       "properties": {
-        "templateFile": "aws-cdk-ground-station-1.template.json",
+        "templateFile": "aws-groundstation-antenna-downlink-config.template.json",
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b87a085c66f986a7bd76b737ad977f4b6a423047ae868a39a929d92c592855c1.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f0076a87566b5ea1b7fa3a6037222d70b7a18bcff5b8abd184d5d567eb4d7397.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
-          "aws-cdk-ground-station-1.assets"
+          "aws-groundstation-antenna-downlink-config.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
@@ -30,71 +30,29 @@
         }
       },
       "dependencies": [
-        "aws-cdk-ground-station-1.assets"
+        "aws-groundstation-antenna-downlink-config.assets"
       ],
       "metadata": {
-        "/aws-cdk-ground-station-1/AntennaDownlinkConfigResource": [
+        "/aws-groundstation-antenna-downlink-config/AntennaDownlinkConfigResource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "AntennaDownlinkConfigResource"
           }
         ],
-        "/aws-cdk-ground-station-1/S3RecordingConfig/Bucket/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "S3RecordingConfigBucketF30B38DE"
-          }
-        ],
-        "/aws-cdk-ground-station-1/S3RecordingConfig/Role/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "S3RecordingConfigRoleD0DB223E"
-          }
-        ],
-        "/aws-cdk-ground-station-1/S3RecordingConfigResource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "S3RecordingConfigResource"
-          }
-        ],
-        "/aws-cdk-ground-station-1/GroundStationMissionProfile/Key/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "GroundStationMissionProfileKey0B7F84D0"
-          }
-        ],
-        "/aws-cdk-ground-station-1/GroundStationMissionProfile/Role/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "GroundStationMissionProfileRoleF16878F2"
-          }
-        ],
-        "/aws-cdk-ground-station-1/GroundStationMissionProfile/TrackingConfigResource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "GroundStationMissionProfileTrackingConfigResource8AE05648"
-          }
-        ],
-        "/aws-cdk-ground-station-1/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Resource"
-          }
-        ],
-        "/aws-cdk-ground-station-1/BootstrapVersion": [
+        "/aws-groundstation-antenna-downlink-config/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/aws-cdk-ground-station-1/CheckBootstrapVersion": [
+        "/aws-groundstation-antenna-downlink-config/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "aws-cdk-ground-station-1"
+      "displayName": "aws-groundstation-antenna-downlink-config"
     },
     "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets": {
       "type": "cdk:asset-manifest",

@@ -3,15 +3,7 @@ import { CfnConfig } from 'aws-cdk-lib/aws-groundstation';
 import { Effect, PolicyDocument, PolicyStatement, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import { Bucket } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
-import {
-  DecodeConfig,
-  DemodulationConfig,
-  Eirp,
-  FrequencyUnit,
-  Polarization,
-  SpectrumConfig,
-  UplinkSpectrumConfig,
-} from './signals';
+import { Eirp, FrequencyUnit, Polarization, SpectrumConfig, UplinkSpectrumConfig } from './signals';
 
 export interface AntennaDownlinkConfigProps {
   readonly name?: string,
@@ -50,25 +42,25 @@ export class AntennaDownlinkConfig extends BaseDataflowPoint {
 
 export interface AntennaDownlinkDemodDecodeConfigProps {
   readonly name?: string,
-  readonly decodeConfig?: DecodeConfig,
-  readonly demodulationConfig?: DemodulationConfig,
+  readonly decodeConfigUnvalidatedJson: string,
+  readonly demodulationConfigUnvalidatedJson: string,
   readonly spectrumConfig?: SpectrumConfig,
 }
 
 export class AntennaDownlinkDemodDecodeConfig extends BaseDataflowPoint {
   public readonly arn: string
 
-  constructor(scope: Construct, id: string, props: AntennaDownlinkDemodDecodeConfigProps = {}) {
+  constructor(scope: Construct, id: string, props: AntennaDownlinkDemodDecodeConfigProps) {
     super(scope, id);
     this.arn = new CfnConfig(scope, 'AntennaDownlinkDemodDecodeConfigResource', {
       name: props.name ?? id,
       configData: {
         antennaDownlinkDemodDecodeConfig: {
           decodeConfig: {
-            unvalidatedJson: props.decodeConfig?.unvalidatedJson,
+            unvalidatedJson: props.decodeConfigUnvalidatedJson,
           },
           demodulationConfig: {
-            unvalidatedJson: props.demodulationConfig?.unvalidatedJson,
+            unvalidatedJson: props.demodulationConfigUnvalidatedJson,
           },
           spectrumConfig: {
             centerFrequency: {

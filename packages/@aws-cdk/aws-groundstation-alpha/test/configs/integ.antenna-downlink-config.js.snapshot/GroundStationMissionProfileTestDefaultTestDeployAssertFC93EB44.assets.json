@@ -1,15 +1,15 @@
 {
   "version": "33.0.0",
   "files": {
-    "b87a085c66f986a7bd76b737ad977f4b6a423047ae868a39a929d92c592855c1": {
+    "21fbb51d7b23f6a6c262b46a9caee79d744a3ac019fd45422d988b96d44b2a22": {
       "source": {
-        "path": "aws-cdk-ground-station-1.template.json",
+        "path": "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.template.json",
         "packaging": "file"
       },
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "b87a085c66f986a7bd76b737ad977f4b6a423047ae868a39a929d92c592855c1.json",
+          "objectKey": "21fbb51d7b23f6a6c262b46a9caee79d744a3ac019fd45422d988b96d44b2a22.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }

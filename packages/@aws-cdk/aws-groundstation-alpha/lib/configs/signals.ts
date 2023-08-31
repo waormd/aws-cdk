@@ -25,14 +25,6 @@ export interface Eirp {
   readonly value?: number
 }
 
-export interface DecodeConfig {
-  readonly unvalidatedJson?: string
-}
-
-export interface DemodulationConfig {
-  readonly unvalidatedJson?: string
-}
-
 export interface SpectrumConfig {
   readonly bandwidth?: FrequencyBandwidth
   readonly centerFrequency?: Frequency,

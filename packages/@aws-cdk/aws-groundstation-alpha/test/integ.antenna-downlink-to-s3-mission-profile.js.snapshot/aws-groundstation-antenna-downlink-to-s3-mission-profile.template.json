@@ -18,18 +18,18 @@
       }
      }
     },
-    "Name": "AntennaDownlinkConfig"
+    "Name": "AntennaDownlinkConfigEdge"
    }
   },
-  "S3RecordingConfigBucketF30B38DE": {
+  "S3RecordingConfigEdgeBucket6815E569": {
    "Type": "AWS::S3::Bucket",
    "Properties": {
-    "BucketName": "aws-groundstation.s3recordingconfig"
+    "BucketName": "aws-groundstation.s3recordingconfigedge"
    },
    "UpdateReplacePolicy": "Retain",
    "DeletionPolicy": "Retain"
   },
-  "S3RecordingConfigRoleD0DB223E": {
+  "S3RecordingConfigEdgeRoleF5DF21ED": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -57,7 +57,7 @@
          "Resource": [
           {
            "Fn::GetAtt": [
-            "S3RecordingConfigBucketF30B38DE",
+            "S3RecordingConfigEdgeBucket6815E569",
             "Arn"
            ]
           },
@@ -67,7 +67,7 @@
             [
              {
               "Fn::GetAtt": [
-               "S3RecordingConfigBucketF30B38DE",
+               "S3RecordingConfigEdgeBucket6815E569",
                "Arn"
               ]
              },
@@ -92,19 +92,19 @@
      "S3RecordingConfig": {
       "BucketArn": {
        "Fn::GetAtt": [
-        "S3RecordingConfigBucketF30B38DE",
+        "S3RecordingConfigEdgeBucket6815E569",
         "Arn"
        ]
       },
       "RoleArn": {
        "Fn::GetAtt": [
-        "S3RecordingConfigRoleD0DB223E",
+        "S3RecordingConfigEdgeRoleF5DF21ED",
         "Arn"
        ]
       }
      }
     },
-    "Name": "S3RecordingConfig"
+    "Name": "S3RecordingConfigEdge"
    }
   },
   "GroundStationMissionProfileKey0B7F84D0": {

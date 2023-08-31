@@ -1,0 +1,19 @@
+{
+  "version": "33.0.0",
+  "files": {
+    "f5b02ac3273edddc588651834282cb792437eb4d656c6976b11c82aaea7a8cc0": {
+      "source": {
+        "path": "aws-groundstation-dataflow-endpoint-config.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "f5b02ac3273edddc588651834282cb792437eb4d656c6976b11c82aaea7a8cc0.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

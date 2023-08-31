@@ -1,0 +1,19 @@
+{
+  "version": "33.0.0",
+  "files": {
+    "03c6e19c4afd705079d00c78d67820edf3b19f8b96c56f5b73df63354a222847": {
+      "source": {
+        "path": "aws-s3-recording-config.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "03c6e19c4afd705079d00c78d67820edf3b19f8b96c56f5b73df63354a222847.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
