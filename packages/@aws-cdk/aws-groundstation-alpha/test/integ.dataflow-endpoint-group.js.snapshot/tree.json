@@ -1,0 +1,146 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "aws-groundstation-dataflow-endpoint-group": {
+        "id": "aws-groundstation-dataflow-endpoint-group",
+        "path": "aws-groundstation-dataflow-endpoint-group",
+        "children": {
+          "GroundStationDataflowEndpointGroup": {
+            "id": "GroundStationDataflowEndpointGroup",
+            "path": "aws-groundstation-dataflow-endpoint-group/GroundStationDataflowEndpointGroup",
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-groundstation-alpha.DataflowEndpointGroup",
+              "version": "0.0.0"
+            }
+          },
+          "DataflowEndpointGroupResource": {
+            "id": "DataflowEndpointGroupResource",
+            "path": "aws-groundstation-dataflow-endpoint-group/DataflowEndpointGroupResource",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::GroundStation::DataflowEndpointGroup",
+              "aws:cdk:cloudformation:props": {
+                "contactPostPassDurationSeconds": 180,
+                "contactPrePassDurationSeconds": 120,
+                "endpointDetails": [
+                  {
+                    "awsGroundStationAgentEndpoint": {
+                      "name": "aws-gs-endpoint",
+                      "egressAddress": {
+                        "socketAddress": {
+                          "name": "127.0.0.1",
+                          "port": 55000
+                        }
+                      },
+                      "ingressAddress": {
+                        "socketAddress": {
+                          "name": "127.0.0.1",
+                          "portRange": {
+                            "maximum": 45000,
+                            "minimum": 44700
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_groundstation.CfnDataflowEndpointGroup",
+              "version": "0.0.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "aws-groundstation-dataflow-endpoint-group/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "0.0.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "aws-groundstation-dataflow-endpoint-group/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "0.0.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "0.0.0"
+        }
+      },
+      "GroundStationMissionProfileTest": {
+        "id": "GroundStationMissionProfileTest",
+        "path": "GroundStationMissionProfileTest",
+        "children": {
+          "DefaultTest": {
+            "id": "DefaultTest",
+            "path": "GroundStationMissionProfileTest/DefaultTest",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "GroundStationMissionProfileTest/DefaultTest/Default",
+                "constructInfo": {
+                  "fqn": "constructs.Construct",
+                  "version": "10.2.69"
+                }
+              },
+              "DeployAssert": {
+                "id": "DeployAssert",
+                "path": "GroundStationMissionProfileTest/DefaultTest/DeployAssert",
+                "children": {
+                  "BootstrapVersion": {
+                    "id": "BootstrapVersion",
+                    "path": "GroundStationMissionProfileTest/DefaultTest/DeployAssert/BootstrapVersion",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnParameter",
+                      "version": "0.0.0"
+                    }
+                  },
+                  "CheckBootstrapVersion": {
+                    "id": "CheckBootstrapVersion",
+                    "path": "GroundStationMissionProfileTest/DefaultTest/DeployAssert/CheckBootstrapVersion",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnRule",
+                      "version": "0.0.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Stack",
+                  "version": "0.0.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/integ-tests-alpha.IntegTestCase",
+              "version": "0.0.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "@aws-cdk/integ-tests-alpha.IntegTest",
+          "version": "0.0.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.2.69"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "0.0.0"
+    }
+  }
+}

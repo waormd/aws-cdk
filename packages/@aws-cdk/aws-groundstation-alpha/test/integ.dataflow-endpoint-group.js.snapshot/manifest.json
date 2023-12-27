@@ -1,0 +1,111 @@
+{
+  "version": "33.0.0",
+  "artifacts": {
+    "aws-groundstation-dataflow-endpoint-group.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "aws-groundstation-dataflow-endpoint-group.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "aws-groundstation-dataflow-endpoint-group": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://067099983013/us-east-1",
+      "properties": {
+        "templateFile": "aws-groundstation-dataflow-endpoint-group.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::067099983013:role/cdk-hnb659fds-deploy-role-067099983013-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::067099983013:role/cdk-hnb659fds-cfn-exec-role-067099983013-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-067099983013-us-east-1/a676791a4ab7eb0f46925c945e92ae2b7d087284d6dd6b89142804139a246f17.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "aws-groundstation-dataflow-endpoint-group.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::067099983013:role/cdk-hnb659fds-lookup-role-067099983013-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "aws-groundstation-dataflow-endpoint-group.assets"
+      ],
+      "metadata": {
+        "/aws-groundstation-dataflow-endpoint-group/DataflowEndpointGroupResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DataflowEndpointGroupResource"
+          }
+        ],
+        "/aws-groundstation-dataflow-endpoint-group/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/aws-groundstation-dataflow-endpoint-group/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "aws-groundstation-dataflow-endpoint-group"
+    },
+    "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/21fbb51d7b23f6a6c262b46a9caee79d744a3ac019fd45422d988b96d44b2a22.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "GroundStationMissionProfileTestDefaultTestDeployAssertFC93EB44.assets"
+      ],
+      "metadata": {
+        "/GroundStationMissionProfileTest/DefaultTest/DeployAssert/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/GroundStationMissionProfileTest/DefaultTest/DeployAssert/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "GroundStationMissionProfileTest/DefaultTest/DeployAssert"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
