@@ -139,25 +139,27 @@ export interface S3RecordingConfigProps {
 
 export class S3RecordingConfig extends BaseDataflowPoint {
   public readonly arn: string;
+  public readonly bucket: Bucket;
+  public readonly s3DeliveryRole: Role;
 
   constructor(scope: Construct, id: string, props: S3RecordingConfigProps = {}) {
     super(scope, id);
 
-    const bucket = props.bucket ?? new Bucket(this, 'Bucket', { bucketName: `aws-groundstation.${ id.toLowerCase() }` });
-    const role = props.role ?? this.s3DeliveryRole(bucket.bucketArn);
+    this.bucket = props.bucket ?? new Bucket(this, 'Bucket', { bucketName: `aws-groundstation.${ id.toLowerCase() }` });
+    this.s3DeliveryRole = props.role ?? this.deliveryRole(this.bucket.bucketArn);
     this.arn = new CfnConfig(scope, 'S3RecordingConfigResource', {
       name: props.name ?? id,
       configData: {
         s3RecordingConfig: {
-          bucketArn: bucket.bucketArn,
-          roleArn: role.roleArn,
+          bucketArn: this.bucket.bucketArn,
+          roleArn: this.s3DeliveryRole.roleArn,
           prefix: props.prefix,
         },
       },
     }).attrArn;
   }
 
-  private s3DeliveryRole(bucketArn: string) {
+  private deliveryRole(bucketArn: string) {
     return new Role(this, 'Role', {
       assumedBy: new ServicePrincipal('groundstation.amazonaws.com'),
       inlinePolicies: {

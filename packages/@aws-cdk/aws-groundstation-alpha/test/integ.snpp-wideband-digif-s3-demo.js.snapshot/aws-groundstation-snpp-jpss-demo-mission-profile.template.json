@@ -8,7 +8,7 @@
       "SpectrumConfig": {
        "Bandwidth": {
         "Units": "MHz",
-        "Value": 101
+        "Value": 100
        },
        "CenterFrequency": {
         "Units": "MHz",

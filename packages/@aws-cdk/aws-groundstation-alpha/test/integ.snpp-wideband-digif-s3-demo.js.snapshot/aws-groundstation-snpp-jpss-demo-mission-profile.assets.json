@@ -1,7 +1,7 @@
 {
   "version": "33.0.0",
   "files": {
-    "2788c1127d18c98be9729cc3d942bd2c16ab550fb057d98ca342400ca60de1b0": {
+    "a6b76853470ab10b853cf8dba2bdb06d88e7f439115695a166fe4b43a0d3ae33": {
       "source": {
         "path": "aws-groundstation-snpp-jpss-demo-mission-profile.template.json",
         "packaging": "file"
@@ -9,7 +9,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "2788c1127d18c98be9729cc3d942bd2c16ab550fb057d98ca342400ca60de1b0.json",
+          "objectKey": "a6b76853470ab10b853cf8dba2bdb06d88e7f439115695a166fe4b43a0d3ae33.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }

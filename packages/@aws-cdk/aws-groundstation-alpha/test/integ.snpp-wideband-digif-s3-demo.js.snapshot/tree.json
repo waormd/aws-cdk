@@ -26,7 +26,7 @@
                   "antennaDownlinkConfig": {
                     "spectrumConfig": {
                       "bandwidth": {
-                        "value": 101,
+                        "value": 100,
                         "units": "MHz"
                       },
                       "centerFrequency": {
