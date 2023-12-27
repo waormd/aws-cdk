@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0f56f464c912e9299fb595c96eb0ed287c3c1d1054e2ca6739607657d2546693.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/eac9bd449a4ae9cfeb9f834e832871d16c6946525e156310c2479fda3cce8106.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -42,7 +42,10 @@
         "/aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigEdge/Bucket/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "S3RecordingConfigEdgeBucket6815E569"
+            "data": "S3RecordingConfigEdgeBucket6815E569",
+            "trace": [
+              "!!DESTRUCTIVE_CHANGES: WILL_REPLACE"
+            ]
           }
         ],
         "/aws-groundstation-antenna-downlink-to-s3-mission-profile/S3RecordingConfigEdge/Role/Resource": [

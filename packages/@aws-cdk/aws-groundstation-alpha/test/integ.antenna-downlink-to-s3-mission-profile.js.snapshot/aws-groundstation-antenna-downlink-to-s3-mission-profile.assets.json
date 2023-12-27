@@ -1,7 +1,7 @@
 {
   "version": "33.0.0",
   "files": {
-    "0f56f464c912e9299fb595c96eb0ed287c3c1d1054e2ca6739607657d2546693": {
+    "eac9bd449a4ae9cfeb9f834e832871d16c6946525e156310c2479fda3cce8106": {
       "source": {
         "path": "aws-groundstation-antenna-downlink-to-s3-mission-profile.template.json",
         "packaging": "file"
@@ -9,7 +9,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "0f56f464c912e9299fb595c96eb0ed287c3c1d1054e2ca6739607657d2546693.json",
+          "objectKey": "eac9bd449a4ae9cfeb9f834e832871d16c6946525e156310c2479fda3cce8106.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }

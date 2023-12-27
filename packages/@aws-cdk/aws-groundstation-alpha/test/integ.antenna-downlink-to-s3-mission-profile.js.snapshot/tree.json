@@ -59,7 +59,7 @@
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
                       "aws:cdk:cloudformation:props": {
-                        "bucketName": "aws-groundstation.s3recordingconfigedge"
+                        "bucketName": "aws-groundstation.s3recordingconfigedge.c6be6"
                       }
                     },
                     "constructInfo": {

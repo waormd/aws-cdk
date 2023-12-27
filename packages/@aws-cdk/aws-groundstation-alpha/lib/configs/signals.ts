@@ -16,8 +16,8 @@ export interface FrequencyBandwidth {
 }
 
 export interface Frequency {
-  readonly units?: FrequencyUnit,
-  readonly value?: number
+  readonly units: FrequencyUnit,
+  readonly value: number
 }
 
 export interface Eirp {
@@ -26,12 +26,12 @@ export interface Eirp {
 }
 
 export interface SpectrumConfig {
-  readonly bandwidth?: FrequencyBandwidth
-  readonly centerFrequency?: Frequency,
-  readonly polarization?: Polarization
+  readonly bandwidth: FrequencyBandwidth
+  readonly centerFrequency: Frequency,
+  readonly polarization: Polarization
 }
 
 export interface UplinkSpectrumConfig {
-  readonly centerFrequency?: Frequency,
-  readonly polarization?: Polarization
+  readonly centerFrequency: Frequency,
+  readonly polarization: Polarization
 }

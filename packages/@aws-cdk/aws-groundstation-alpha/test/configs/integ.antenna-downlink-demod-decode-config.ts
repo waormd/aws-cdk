@@ -1,6 +1,6 @@
 import * as integ from '@aws-cdk/integ-tests-alpha';
 import * as cdk from 'aws-cdk-lib/core';
-import { AntennaDownlinkDemodDecodeConfig } from '../../lib';
+import { AntennaDownlinkDemodDecodeConfig, FrequencyUnit, Polarization } from '../../lib';
 
 const app = new cdk.App();
 
@@ -9,6 +9,17 @@ const stack = new cdk.Stack(app, 'aws-groundstation-antenna-downlink-demod-decod
 new AntennaDownlinkDemodDecodeConfig(stack, 'AntennaDownlinkDemodDecodeConfig', {
   decodeConfigUnvalidatedJson: '{}',
   demodulationConfigUnvalidatedJson: '{}',
+  spectrumConfig: {
+    bandwidth: {
+      value: 100,
+      units: FrequencyUnit.MHZ,
+    },
+    centerFrequency: {
+      value: 7812,
+      units: FrequencyUnit.MHZ,
+    },
+    polarization: Polarization.RIGHT_HAND,
+  },
 });
 
 new integ.IntegTest(app, 'GroundStationMissionProfileTest', {

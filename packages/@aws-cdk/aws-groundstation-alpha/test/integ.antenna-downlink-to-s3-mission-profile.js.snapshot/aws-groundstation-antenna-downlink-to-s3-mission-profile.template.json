@@ -24,7 +24,7 @@
   "S3RecordingConfigEdgeBucket6815E569": {
    "Type": "AWS::S3::Bucket",
    "Properties": {
-    "BucketName": "aws-groundstation.s3recordingconfigedge"
+    "BucketName": "aws-groundstation.s3recordingconfigedge.c6be6"
    },
    "UpdateReplacePolicy": "Retain",
    "DeletionPolicy": "Retain"

@@ -11,12 +11,12 @@ import {
 
 const app = new cdk.App();
 
-const stack = new cdk.Stack(app, 'aws-groundstation-antenna-downlink-to-s3-mission-profile');
+const stack = new cdk.Stack(app, 'aws-groundstation-snpp-jpss-demo-mission-profile');
 
-new MissionProfile(stack, 'GroundStationMissionProfile', {
+new MissionProfile(stack, 'SnppJpssGroundStationMissionProfile', {
   dataflowEdges: [
     new DataflowEdge(
-      new AntennaDownlinkConfig(stack, 'AntennaDownlinkConfigEdge', {
+      new AntennaDownlinkConfig(stack, 'SnppJpssAntennaDownlinkConfigEdge', {
         spectrumConfig: {
           bandwidth: {
             value: 100,
@@ -29,7 +29,7 @@ new MissionProfile(stack, 'GroundStationMissionProfile', {
           polarization: Polarization.RIGHT_HAND,
         },
       }),
-      new S3RecordingConfig(stack, 'S3RecordingConfigEdge'),
+      new S3RecordingConfig(stack, 'SnppJpssS3RecordingConfigEdge'),
     ),
   ],
 });
@@ -39,3 +39,4 @@ new integ.IntegTest(app, 'GroundStationMissionProfileTest', {
 });
 
 app.synth();
+
